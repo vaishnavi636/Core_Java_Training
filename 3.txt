@@ -1,0 +1,111 @@
+Project #3: Numbers to Words 
+
+
+package training;
+
+import java.util.*;  
+
+public class Numbers_to_Words {
+	
+static void numberToWords(char num[])  
+{ 
+    
+    int len = num.length;  
+    if (len == 0)   
+{  
+    System.out.println("The string is empty.");  // If number is empty print statement.
+    return;  
+}
+if (len > 4)   
+{  
+System.out.println("\n The given number has more than 4 digits.");  
+return;  
+}
+//string type array for one-digit numbers
+String[] one_digit = new String[] {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};  
+
+//string type array for two digits numbers  
+String[] two_digits = new String[] {"", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};  
+
+//string type array of tens multiples   
+String[] multiple_of_tens = new String[] {"",  "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};  
+
+String[] more_than_ten = new String[] {"Hundred", "Thousand"};
+
+System.out.print(String.valueOf(num) + ": ");  
+
+if (len == 1)   
+{  
+    System.out.println(one_digit[num[0]-'0']);  
+    return;  
+}  
+int x = 0;  
+  while (x < num.length)   
+{  
+    if (len >= 3)   
+{  
+    if (num[x] - '0' != 0)   
+{  
+System.out.print(one_digit[num[x] - '0'] + " ");  
+
+System.out.print(more_than_ten[len - 3]+ " ");  
+}  
+--len;  
+}  
+else   
+{  
+  
+if (num[x] - '0' == 1)   
+{  
+  
+int sum = num[x] - '0' + num[x + 1] - '0';  
+System.out.println(two_digits[sum]);  
+return;  
+}  
+else if (num[x] - '0' == 2 && num[x + 1] - '0' == 0)   
+{  
+System.out.println("Twenty");  
+return;  
+}  
+
+else   
+{  
+int i = (num[x] - '0');  
+if (i > 0)  
+
+System.out.print(multiple_of_tens[i]+ " ");  
+else  
+//prints space  
+System.out.print("");  
+ 
+++x;  
+
+if (num[x] - '0' != 0)  
+  
+System.out.println(one_digit[num[x] - '0']);  
+}  
+}  
+++x;  
+}  
+}  
+
+//Main Method
+
+public static void main(String args[])  
+{  
+	numberToWords("20".toCharArray()); 
+	numberToWords("86".toCharArray()); 
+	numberToWords("343".toCharArray()); 
+
+}
+}
+
+OutPut:
+20: Twenty
+86: Eighty Six
+343: Three Hundred Forty Three
+
+
+	
+
+

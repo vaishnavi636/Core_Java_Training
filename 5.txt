@@ -1,0 +1,169 @@
+Project #5: Case Changer 
+
+package training;
+import java.util.*;
+
+public class CaseChanger {
+	char chr = 0;
+
+ 
+public void lowercase(String str)  {
+	System.out.println("Original String: "+str);
+	int len = str.length();
+	StringBuffer strBuffer = new StringBuffer(len);
+	for (int i = 0; i < len; i++)
+	{
+        chr = str.charAt(i); 
+	if (Character.isTitleCase(chr)) {
+         chr = Character.toLowerCase(chr);
+         }
+	if (Character.isUpperCase(chr)) {
+        chr = Character.toLowerCase(chr);
+     }
+	strBuffer.append(chr);
+	}
+    System.out.println("Converting case to Lower Case: "+strBuffer.toString());
+
+
+	}
+
+public void uppercase(String str) {
+	System.out.println("Original String: "+str);
+	int len = str.length();
+	StringBuffer strBuffer = new StringBuffer(len);
+	for (int i = 0; i < len; i++)
+	{
+        chr = str.charAt(i); 
+	if (Character.isLowerCase(chr)) {
+         chr = Character.toUpperCase(chr);
+         
+     	
+	 }
+	strBuffer.append(chr);
+	}
+    System.out.println("Converting case to Upper Case: "+strBuffer.toString());
+
+
+	}
+
+
+public void capitalize(String str) {
+	System.out.println("Original String: "+str);
+	char[] charArray = str.toCharArray();
+	    boolean space = true;
+
+	    for(int i = 0; i < charArray.length; i++) {
+
+	      // if the array element is a letter
+	      if(Character.isLetter(charArray[i])) {
+
+	        // check space is present before the letter
+	        if(space) {
+
+	          // change the letter into uppercase
+	          charArray[i] = Character.toUpperCase(charArray[i]);
+	          space = false;
+	        }
+	      }
+
+	      else {
+	        // if the new character is not character
+	    	  space = true;
+	      }
+	    }
+
+	    // convert the char array to the string
+	    str = String.valueOf(charArray);
+	    System.out.println("Convert every word of a String to uppercase: " + str);
+	  }
+	
+	
+
+
+public void sentencecase(String str) {
+	System.out.println("Original String: "+str);
+	String firstLetter = str.substring(0, 1);
+    String remainingLetters = str.substring(1, str.length());
+
+    // change the first letter to uppercase
+    firstLetter = firstLetter.toUpperCase();
+
+    // join the two substrings
+    str = firstLetter + remainingLetters;
+    System.out.println("Output String: " + str);
+	
+}
+
+public void invert(String str) {
+	StringBuffer newStr=new StringBuffer(str);    
+    
+    for(int i = 0; i < str.length(); i++) {    
+            
+        //Checks for lower case character    
+        if(Character.isLowerCase(str.charAt(i))) {    
+            //using toUpperCase    
+            newStr.setCharAt(i, Character.toUpperCase(str.charAt(i)));    
+        }    
+        //Checks for upper case character    
+        else if(Character.isUpperCase(str.charAt(i))) {    
+            //Convert it into upper case using toLowerCase() function    
+            newStr.setCharAt(i, Character.toLowerCase(str.charAt(i)));    
+        }    
+    }    
+    System.out.println("String after case conversion : " + newStr);    
+}    
+   
+	
+
+	
+public static void main(String[] args) {
+	Scanner readme= new Scanner(System.in); //System.in is a standard input stream.
+	System.out.print("Enter a string: ");
+	String str = readme.nextLine(); //reads string.
+	
+	CaseChanger cases = new CaseChanger();
+	
+	Scanner sc2= new Scanner(System.in); //System.in is a standard input stream.
+	System.out.print("Enter first number- ");
+	int num = sc2.nextInt();
+	
+	switch(num) {
+	case 1: cases.lowercase(str);
+	break;
+	case 2: cases.uppercase(str);
+	break;
+	case 3: cases.capitalize(str);
+	break;
+	case 4: cases.sentencecase(str);
+	break;
+	case 5: cases.invert(str);
+	break;
+	default:System.out.println("Your input string is"+ str);  
+	}
+	}
+
+
+
+
+
+
+
+}
+		
+		
+
+OUTPUT: 
+Enter a string: hello world this is my own code
+Enter first number- 1
+Original String: hello world this is my own code
+Converting case to Lower Case: hello world this is my own code
+
+Enter a string: hello world this is my own code
+Enter first number- 2
+Original String: hello world this is my own code
+Converting case to Upper Case: HELLO WORLD THIS IS MY OWN CODE
+
+
+Enter a string: hello world this is my own code
+Enter first number- 5
+String after case conversion : HELLO WORLD THIS IS MY OWN CODE
