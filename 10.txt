@@ -2,6 +2,8 @@ Project #10: Permutation
 
 package training;
 
+import java.util.*;
+
 public class Permutation {
 	
 	void printPermutations(int array[], int n)  
@@ -47,23 +49,40 @@ public class Permutation {
 	public static void main(String args[])  
 	{  
 	Permutation p = new Permutation();  
-	//defining an array whose permutation is to find  
-	int array[] = { 8, 2, 6 }; 
+	//defining an array whose permutation is to find 
+	
+	
+	
+	Scanner sc= new Scanner(System.in);   
+	
+	System.out.print("Enter number of elements - "); 
+	int n= sc.nextInt();  
+ 
+	int[] array = new int[n];  
+	
+	for(int i=0; i<n; i++)  
+	{  
+	 array[i]=sc.nextInt();  
+	}  
 	int m = array.length;
-	//calling the user-defined method  
-	p.findPermutation(array, array.length, array.length); 
+
+
+    p.findPermutation(array, array.length, array.length); 
 	
 	int fact = 1;
 	for(int j=1; j<=m; j++){    
 		fact=fact*j;    
 	  }    
-	  System.out.println("Permutation is: "+fact);
+	  System.out.println("Total Permutation is: "+fact);
 	
 	}  
 	}  
 
 
-OUTPUT:
+
+
+
+OUTPUT: 3
 8 2 6 
 2 8 6 
 6 8 2 
